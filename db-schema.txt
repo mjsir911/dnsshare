@@ -1,0 +1,8 @@
+ok, so. we have:
+
+
+
+
+
+- shared-domains: name (wizard.gay), owner (m), upstream-zone-id (nullable)
+- claimed domains: name (gay), owner (bret), foreign-key -> shared-domain

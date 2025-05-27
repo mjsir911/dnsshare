@@ -1,0 +1,2 @@
+class ClaimedDomainsController < ApplicationController
+end
