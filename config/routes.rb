@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :upstream_zones
   resources :claimed_domains
   resources :shared_domains
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

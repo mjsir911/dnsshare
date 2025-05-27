@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_27_183943) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_27_191459) do
   create_table "claimed_domains", force: :cascade do |t|
     t.string "name"
     t.string "owner"
@@ -23,7 +23,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_183943) do
   create_table "shared_domains", force: :cascade do |t|
     t.string "name"
     t.string "owner"
-    t.datetime "date_created"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

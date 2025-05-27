@@ -1,5 +1,5 @@
 class SharedDomainsController < ApplicationController
-    # before_action :set_task, only: [:show, :edit, :update, :destroy]
+    before_action :set_domain, only: [:show, :edit, :update, :destroy]
     def index
         @domain = SharedDomain.all
         render json: @domain
@@ -11,13 +11,13 @@ class SharedDomainsController < ApplicationController
     end
 
     def new
-        @domain = SharedDomain.new
     end
 
     def create
-        @domain = SharedDomain.new(params)
+        @domain = SharedDomain.new(domain_params)
+
         if @domain.save
-            redirect_to @domain, notice: 'Domain was successfully created.'
+            render json: @domain, status: :created, location: @domain
         else
             render :new
         end
@@ -27,24 +27,25 @@ class SharedDomainsController < ApplicationController
     end
 
     def update
-        if @task.update(task_params)
-            redirect_to @task, notice: 'Task was successfully updated.'
+        if @domain.update(domain_params)
+            render json: @domain, status: :ok
         else
+            puts "awawa!"
             render :edit
         end
     end
 
     def destroy
-        @task.destroy
-        redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+        @domain.destroy
+        redirect_to tasks_url, notice: 'Domain was successfully destroyed.'
     end
 
     private
-    def set_task
-        @task = Task.find(params[:id])
+    def set_domain
+        @domain = SharedDomain.find(params[:id])
     end
 
-    def task_params
-        params.require(:task).permit(:title, :description)
+    def domain_params
+        params.permit(:name, :owner)
     end
 end
