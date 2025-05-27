@@ -31,7 +31,7 @@
 				<td><button>Claim</button></td>
 				<td>?</td>
 				<td>?</td>
-				<td>?</td>
+				<td>4287 days ago</td>
 			</tr>
 			<tr>
 				<td><a href="https://what.lol">what.lol</td>
@@ -40,52 +40,127 @@
 				<td><button>Claim</button></td>
 				<td>?</td>
 				<td>?</td>
-				<td>?</td>
+				<td>8795 ago</td>
 			</tr>
 			<tr>
 				<td><a href="https://nice.com">nice.com</td>
 				<td>Also Mike</td>
 				<td>private</td>
 				<td><button>Claim</button></td>
+				<td>
+					<details>
+						<summary>cat, dog, fish, (...)</summary>
+						<p>cat, dog, fish, bird, john, mary, alice, bob</p>
+					</details>
+				</td>
 				<td>?</td>
+				<td>59128 days ago</td>
+			</tr>
+			<tr>
+				<td><a href="https://amazon.com">amazon.com</td>
+				<td>Also Mike</td>
+				<td>private</td>
+				<td><button>Claim</button></td>
+				<td>
+					<details>
+						<summary>cat, dog, fish, (...)</summary>
+						<p>cat, dog, fish, bird, john, mary, alice, bob</p>
+					</details>
+				</td>
 				<td>?</td>
+				<td>482 days ago</td>
+			</tr>
+			<tr>
+				<td><a href="https://google.com">google.com</td>
+				<td>Also Mike</td>
+				<td>private</td>
+				<td><button>Claim</button></td>
+				<td>
+					<details>
+						<summary>cat, dog, fish, (...)</summary>
+						<p>cat, dog, fish, bird, john, mary, alice, bob</p>
+					</details>
+				</td>
 				<td>?</td>
+				<td>150 days ago</td>
 			</tr>
 		</table>
 	</mby-dev-section>
 	
-	<mby-dev-section>
+	<!-- <mby-dev-section>
 		<mby-table>
 			<mby-table-row>Row one</mby-table-row>
 			<mby-table-row>Row two</mby-table-row>
 			<mby-table-row>Row three</mby-table-row>
 		</mby-table>
-	</mby-dev-section>
+	</mby-dev-section> -->
 	
 	<h1>Button</h1>
 	<mby-dev-section>
 		<button>
 			Button
 		</button>
-		<mby-button>
+		<!-- <mby-button>
 			Also Button
-		</mby-button>
+		</mby-button> -->
+	</mby-dev-section>
+
+	<h1>Claim</h1>
+	<mby-dev-section>
+		<button>
+			Claim
+		</button>
 	</mby-dev-section>
 
 	<h1>List of Subdomains</h1>
 	<mby-dev-section>
-		Expandable
+		<details>
+			<summary>cat, dog, fish, (...)</summary>
+		
+			<p>cat, dog, fish, bird, john, mary, alice, bob</p>
+		</details>
 	</mby-dev-section>
 
 	<h1>TOS?</h1>
 	<mby-dev-section>
-		Hi there
+		<a href="https://example.com">Yes</a>
+		No
 	</mby-dev-section>
 
 	<h1>Age</h1>
 	<mby-dev-section>
-		Hi there
+		<span><span style="display: inline-block" id="date">January 01, 2000</span> days ago</span>
+		
+		<script type="module">
+			const getDaysFrom = (date) => {
+				const today = new Date();
+				date = new Date(date);
+				const diff = today.getTime() - date.getTime();
+				return Math.round(diff / (1000 * 60 * 60 * 24));
+			}
+			const dateElem = document.querySelector('#date');
+			dateElem.textContent = getDaysFrom(dateElem.textContent);
+			
+		</script>
+		
 	</mby-dev-section>
 
 </body>
+<script type="module">
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+	coll[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.display === "block") {
+		content.style.display = "none";
+		} else {
+		content.style.display = "block";
+		}
+	});
+	}
+
+</script>
 </html>

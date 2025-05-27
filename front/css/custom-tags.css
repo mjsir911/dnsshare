@@ -2,12 +2,21 @@ html, body {
   	font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+	--primary-rgb: 128 32 64;
+	--primary: rgba(var(--primary-rgb) / 0.5);
+	--secondary-rgb: 255 64 64;
+	--secondary: rgba(var(--secondary-rgb) / 0.5);
+	--accent-rgb: 128 255 255;
+	--accent: rgba(var(--accent-rgb) / 0.5);
+}
+
 mby-dev-section {
 	display: flex;
     align-items: center;
     justify-content: center;
 	flex-direction: column;
-	border: 2px solid red;
+	border: 1px solid red;
 	padding: 1rem;
 	+ mby-dev-section {
 		margin-top: 1rem;
@@ -22,37 +31,68 @@ mby-table {
 }
 
 table {
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--accent);
 	border-spacing: 0;
 }
 
 th {
-	background-color:rgb(72, 91, 97);
+	padding: .5em;
+	font-weight: 700;
+	background-color: var(--accent);
 	color: white;
 }
 
 td {
 	padding-inline: 1rem;
+	padding-block: .125em;
 }
 
 :is(th, td):not(:last-child) {
-	border-right: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px dashed var(--accent);
 }
 
-tr:not(:last-child) :is(th, td) {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-}
-
+tr:nth-child(odd) { background-color: rgb(var(--accent-rgb) / .15) }
+tr:not(:first-child):hover {background-color: rgb(var(--primary-rgb) / .5);}
 
 /**
  * Button element
  */
 
 button {
-	/* background: rgba(255, 255, 255, 0.5); */
+	background: rgb(var(--accent-rgb) / .25);
+	border: 2px solid var(--accent);
+	margin: .25em 0em;
+	padding: .25em .5em;
+	border-radius: 4px;
+	transition: background-color .1s;
+	&:is(:hover, :focus-visible) {
+		background: rgb(var(--accent-rgb) / .5);
+		cursor: pointer;
+	}
 }
 
 mby-button {
 	/* color: black;
 	background: white; */
+}
+
+/**
+ * Collapsible element
+ */
+
+summary {
+  background-color: var(--accent);
+  width: fit-content;
+  color: white;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  outline: none;
+  padding: .25em .5em;
+  border-radius: 4px;
+  border: 2px solid var(--accent);
+}
+
+.active, summary:is(:hover, :focus-visible) {
+  background-color: var(--accent);
 }

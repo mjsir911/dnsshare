@@ -13,13 +13,44 @@ const request = {
 	DELETE: (path) => sendRequest(path, 'DELETE'),
 }
 
-// /domain/:domain
+// /domains
+const domains = () => `domain`;
+// /domain/[:domain]
 const domain = (domain) => `domain/${domain}`;
-// /domain/:domain/:subdomain
+// /domain/[:domain]/[:subdomain]
 const subdomain = (domain, subdomain) => `domain/${domain}/${subdomain}/`;
 domain.subdomain = subdomain;
 
 const api = { domain };
 
-request.GET(api.domain('bret.com'));
-request.GET(api.domain.subdomain('bret.com', 'sub'));
+const getDomains = async () => {
+	return request.GET(api.domains());
+};
+
+const getSubdomains = async (domain) => {
+	return request.GET(api.domain(domain));
+};
+
+const addSubdomain = async (domain, subdomain) => {
+	return request.POST(api.domain.subdomain(domain, subdomain));
+};
+
+const deleteSubdomain = async (domain, subdomain) => {
+	return request.DELETE(api.domain.subdomain(domain, subdomain));
+};
+
+console.log(await addSubdomain('bret.site', 'sub'));
+console.log(await deleteSubdomain('bret.site', 'sub'));
+
+
+
+
+
+
+
+
+
+
+
+// Styling
+
