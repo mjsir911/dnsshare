@@ -1,12 +1,12 @@
 class SharedDomainsController < ApplicationController
     before_action :set_domain, only: [:show, :edit, :update, :destroy]
+
     def index
         @domain = SharedDomain.all
         render json: @domain
     end
 
     def show
-        @domain = SharedDomain.find(params[:id])
         render json: @domain
     end
 
@@ -30,7 +30,6 @@ class SharedDomainsController < ApplicationController
         if @domain.update(domain_params)
             render json: @domain, status: :ok
         else
-            puts "awawa!"
             render :edit
         end
     end

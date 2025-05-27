@@ -5,5 +5,22 @@ ok, so. we have:
 
 
 - shared-domains: name (wizard.gay), owner (m), upstream-zone-id (nullable)
-- claimed domains: name (gay), owner (bret), foreign-key -> shared-domain
+- claimed domains: name (gay), owner (bret), foreign-key -> shared-domain, upstream-zone-id is deduced from shared-domain. rrset maybe? cname maybe? or is cname deduced from API? only store data in one place.
 - upstream-zone, the thing to plug into the upstream API: id
+
+
+bret creates a github page. and wants gay.wizard.gay
+
+api side:
+- POST https://127.0.0.1:3000/shared_domains?name=wizard.gay&owner=m
+rails does:
+    - creates shared-domains row with name & owner
+    - on that creation, does an upstream request:
+        - create zone
+api side:
+- POST http://127.0.0.1:3000/claimed_domains?name=gay&owner=bret&parent-id=1 (1 corresponds to wizard.gay)
+- rails does:
+    - checks shared-domain is allowable
+    - creates claimed-domains row with name=gay, owner=bret, parent-id=1
+    - on that creation, does a request to upstream powerdns creating a record for gay.wizard.gay with A record or CNAME record pointing at ????
+        - or do we just make it have a NS record pointing somewhere else where people can actually do DNS things
