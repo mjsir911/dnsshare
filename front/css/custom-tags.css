@@ -1,0 +1,58 @@
+html, body {
+  	font-family: Arial, Helvetica, sans-serif;
+}
+
+mby-dev-section {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	flex-direction: column;
+	border: 2px solid red;
+	padding: 1rem;
+	+ mby-dev-section {
+		margin-top: 1rem;
+	}
+}
+
+mby-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	flex-direction: column;
+}
+
+table {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+	border-spacing: 0;
+}
+
+th {
+	background-color:rgb(72, 91, 97);
+	color: white;
+}
+
+td {
+	padding-inline: 1rem;
+}
+
+:is(th, td):not(:last-child) {
+	border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+tr:not(:last-child) :is(th, td) {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/**
+ * Button element
+ */
+
+button {
+	/* background: rgba(255, 255, 255, 0.5); */
+}
+
+mby-button {
+	/* color: black;
+	background: white; */
+}
