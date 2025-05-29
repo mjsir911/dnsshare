@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
+  resources :domains
   # resources :upstream_zones
   # resources :claimed_domains
   # resources :shared_domains XXX
