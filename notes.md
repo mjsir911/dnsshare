@@ -4,3 +4,5 @@ curl --json '{"name": "test.wizard.gay.", "kind": "Native", "masters": [], "name
 
 
 curl -X PATCH --data '{"rrsets": [{"name": "gay.test.wizard.gay.", "type": "CNAME", "ttl": 3600, "changetype": "REPLACE", "records": [{"content": "mjsir911.github.io.", "disabled": false}]}]}' -H 'X-API-Key: hacktheplanet!' https://dns.sirabella.org/api/v1/servers/localhost/zones/test.wizard.gay.
+
+need to figure out rails foreignkey models

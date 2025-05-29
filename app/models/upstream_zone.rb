@@ -1,2 +1,0 @@
-class UpstreamZone < ApplicationRecord
-end

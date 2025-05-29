@@ -1,2 +1,0 @@
-class UpstreamZonesController < ApplicationController
-end

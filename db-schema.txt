@@ -6,7 +6,7 @@ ok, so. we have:
 
 - shared-domains: name (wizard.gay), owner (m), upstream-zone-id (nullable)
 - claimed domains: name (gay), owner (bret), foreign-key -> shared-domain, upstream-zone-id is deduced from shared-domain. rrset maybe? cname maybe? or is cname deduced from API? only store data in one place.
-- upstream-zone, the thing to plug into the upstream API: id
+- upstream-zone, the thing to plug into the upstream API: upstream_id
 
 
 bret creates a github page. and wants gay.wizard.gay

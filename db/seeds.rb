@@ -9,8 +9,12 @@
 #   end
 #
 #
-w = SharedDomain.create(name: "wizard.gay", owner: "m")
-SharedDomain.create(name: "what.lol", owner: "Michael")
-a = ClaimedDomain.create(name: "gay", owner: "bret")
+
+user = User.create(email: "whatever@example.com")
+bret = User.create(email: "bret@example.com")
+michael = User.create
+r = Domain.create(root: "wizard.gay", user: user)
+r2 = Domain.create(root: "what.lol", owner: "Michael")
+a = Site.create(stub: "gay", owner: "bret")
 a.save()
 

@@ -1,8 +1,8 @@
-class SharedDomainsController < ApplicationController
+class DomainsController < ApplicationController
     before_action :set_domain, only: [:show, :edit, :update, :destroy]
 
     def index
-        @domain = SharedDomain.all
+        @domain = Domain.all
         render json: @domain
     end
 
@@ -14,7 +14,7 @@ class SharedDomainsController < ApplicationController
     end
 
     def create
-        @domain = SharedDomain.new(domain_params)
+        @domain = Domain.new(domain_params)
 
         if @domain.save
             render json: @domain, status: :created, location: @domain
@@ -41,10 +41,10 @@ class SharedDomainsController < ApplicationController
 
     private
     def set_domain
-        @domain = SharedDomain.find(params[:id])
+        @domain = Domain.find(params[:id])
     end
 
     def domain_params
-        params.permit(:name, :owner)
+        params.permit(:root, :user)
     end
 end

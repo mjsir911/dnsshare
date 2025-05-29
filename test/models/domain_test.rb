@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SharedDomainsControllerTest < ActionDispatch::IntegrationTest
+class DomainTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -10,22 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_27_191459) do
-  create_table "claimed_domains", force: :cascade do |t|
-    t.string "name"
-    t.string "owner"
-    t.integer "SharedDomain_id", null: false
+ActiveRecord::Schema[8.0].define(version: 2025_05_28_164831) do
+  create_table "domains", force: :cascade do |t|
+    t.string "root"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["SharedDomain_id"], name: "index_claimed_domains_on_SharedDomain_id"
+    t.index ["user_id"], name: "index_domains_on_user_id"
   end
 
-  create_table "shared_domains", force: :cascade do |t|
-    t.string "name"
-    t.string "owner"
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
-  add_foreign_key "claimed_domains", "SharedDomains"
+  create_table "sites", force: :cascade do |t|
+    t.string "slug"
+    t.integer "domain_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_sites_on_domain_id"
+    t.index ["user_id"], name: "index_sites_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
+  add_foreign_key "domains", "users"
+  add_foreign_key "sessions", "users"
+  add_foreign_key "sites", "domains"
+  add_foreign_key "sites", "users"
 end
