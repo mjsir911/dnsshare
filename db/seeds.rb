@@ -10,11 +10,9 @@
 #
 #
 
-user = User.create(email: "whatever@example.com")
-bret = User.create(email: "bret@example.com")
-michael = User.create
-r = Domain.create(root: "wizard.gay", user: user)
-r2 = Domain.create(root: "what.lol", owner: "Michael")
-a = Site.create(stub: "gay", owner: "bret")
-a.save()
-
+user = User.create!(email_address: "whatever@example.com", password: "password123")
+bret = User.create!(email_address: "bret@example.com", password: "password123")
+michael = User.create!(email_address: "michael@example.com", password: "password123")
+r = Domain.create!(root: "wizard.gay", user: user)
+r2 = Domain.create!(root: "what.lol", user: michael)
+a = Site.create!(slug: "gay", domain: r, user: bret)
